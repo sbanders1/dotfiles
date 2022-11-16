@@ -2,20 +2,20 @@
 #  ---------------------------------------------------------------------------
 
 # Directory Listing aliases
-alias dir='ls -hFxC'
-alias l.='ls -C -d .* --color=tty' # short listing, only hidden files - .*
-alias l='ls -lathFC'             # long, sort by newest to oldest
-alias L='ls -latrhFC'            # long, sort by oldest to newest
-alias la='ls -AlC'               # show hidden files
-alias lc='ls -lcrC'              # sort by change time
-alias lk='ls -lSrC'              # sort by size
-alias lh='ls -lSrhC'             # sort by size human readable
+alias dir='ls -hFx --color'
+alias l.='ls -d .* --color=tty' # short listing, only hidden files - .*
+alias l='ls -lathF --color'             # long, sort by newest to oldest
+alias L='ls -latrhF --color'            # long, sort by oldest to newest
+alias la='ls -Al --color'               # show hidden files
+alias lc='ls -lcr --color'              # sort by change time
+alias lk='ls -lSr --color'              # sort by size
+alias lh='ls -lSrh --color'             # sort by size human readable
 alias lm='ls -al | more'        # pipe through 'more'
-alias lo='ls -laSFhC'            # sort by size largest to smallest
-alias lr='ls -lRC'               # recursive ls
-alias lt='ls -ltrC'              # sort by date
-alias lu='ls -lurC'              # sort by access time
-
+alias lo='ls -laSFh --color'            # sort by size largest to smallest
+alias lr='ls -lR --color'               # recursive ls
+alias lt='ls -ltr --color'              # sort by date
+alias lu='ls -lur --color'              # sort by access time
+alias ls='ls --color'
 
 #   lr:  Full Recursive Directory Listing
 #   ------------------------------------------
