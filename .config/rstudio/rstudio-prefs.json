@@ -1,0 +1,55 @@
+{
+    "panes": {
+        "quadrants": [
+            "Source",
+            "TabSet1",
+            "Console",
+            "TabSet2"
+        ],
+        "tabSet1": [
+            "Environment",
+            "Build",
+            "VCS",
+            "Connections",
+            "Plots",
+            "Presentation"
+        ],
+        "tabSet2": [
+            "Files",
+            "Help",
+            "Viewer",
+            "Presentations"
+        ],
+        "hiddenTabSet": [
+            "History",
+            "Packages",
+            "Tutorial"
+        ],
+        "console_left_on_top": false,
+        "console_right_on_top": true,
+        "additional_source_columns": 0
+    },
+    "show_margin": false,
+    "show_diagnostics_other": true,
+    "save_files_before_build": true,
+    "default_project_location": "~/n/shiny",
+    "wrap_tab_navigation": false,
+    "reuse_sessions_for_project_links": true,
+    "jobs_tab_visibility": "shown",
+    "initial_working_directory": "~",
+    "posix_terminal_shell": "bash",
+    "editor_theme": "Monokai",
+    "check_unexpected_assignment_in_function_call": true,
+    "restore_source_documents": false,
+    "load_workspace": false,
+    "always_save_history": false,
+    "restore_last_project": false,
+    "default_r_version": {
+        "version": "3.6.0",
+        "r_home": "/usr/lib64/R",
+        "label": "",
+        "module": ""
+    },
+    "restore_project_r_version": false,
+    "show_hidden_files": true
+}
