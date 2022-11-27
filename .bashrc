@@ -17,10 +17,6 @@ export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-export NZ_USER=$(whoami)
-export NZ_HOST=crconz1
-export NZ_DATABASE=JD_KABUL
-
 alias af='vi "$(fzf)"'
 alias path='echo -e ${PATH//:/\\n}'
 alias metop='htop -u $(whoami)'
@@ -44,8 +40,6 @@ export pager=less
 alias vi='nvim'
 alias vim='nvim'
 export VISUAL=nvim
-export PATH=/usr/local/ImageMagick-7.0.7-22/bin:$PATH
-#export PS1='\u@\h: \e[0;36m]\w\e[m\] (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2))\n\$'
 
 if type rg &> /dev/null; then
   export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
@@ -58,25 +52,8 @@ git_branch() {
 
 export PS1="\[\033[32m\]\w\[\033[33m\] \$(git_branch)\[\033[00m\]\n\$ "
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-source scl_source enable devtoolset-7
-
 # Path to your oh-my-bash installation.
-export OSH=/home/sanderson/.oh-my-bash
+export OSH=$HOME/.oh-my-bash
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
