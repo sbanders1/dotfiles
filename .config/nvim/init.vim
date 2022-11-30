@@ -24,18 +24,26 @@ nnoremap <Right> <C-W>l
 nnoremap <Leader>o m`o<Esc>``
 nnoremap <Leader>O m`O<Esc>``
 
-nnoremap zz <Esc>:w<cr>
+nnoremap zz :w<cr>
 nnoremap <Tab> <C-w>w
 
 nnoremap <Leader>x *``cgn
 nnoremap <Leader>X #``cgN
 
 " Neoscroll
-lua require('neoscroll').setup()
+" lua require('neoscroll').setup()
 
 " NERDTree ----------
 " Settings
+let NERDTreeCHDirMode=0
 let NERDTreeShowHidden=1
+let NERDTreeWinSize=50
+let NERDTreeQuitOnOpen=1
+let NERDTreeKeepTreeInNewTab=1
+
+
+"" NERDTree mappings
+nnoremap <Leader>t :NERDTreeToggle<cr>
 
 " Start NERDTree when Vim is started without file arguments.
 autocmd StdinReadPre * let s:std_in=1
@@ -44,9 +52,20 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-" NERDTree mappings
-nnoremap <C-n> :NERDTree<cr>
-nnoremap <C-t> :NERDTreeToggle<cr>
+" nerdtree-git-plugin icons
+" Override the default symbols
+let g:NERDTreeIndicatorMapCustom = {
+  \ 'Modified'  : 'M',
+  \ 'Staged'    : 'S',
+  \ 'Untracked' : '*',
+  \ 'Renamed'   : 'R',
+  \ 'Unmerged'  : 'U',
+  \ 'Deleted'   : '!',
+  \ 'Dirty'     : 'D',
+  \ 'Clean'     : 'C',
+  \ 'Ignored'   : 'I',
+  \ 'Unknown'   : '?'
+\ }
 
 " PLUGIN: FZF
 nnoremap <C-p> :GFiles<Cr>
@@ -66,12 +85,12 @@ nnoremap <silent> <Leader>h/ :History/<CR>
 " Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
 " - https://github.com/Valloric/YouCompleteMe
 " - https://github.com/nvim-lua/completion-nvim
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 
 
