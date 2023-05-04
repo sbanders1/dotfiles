@@ -14,6 +14,8 @@ vim.keymap.set('n', '<leader>pl', builtin.planets, {})
 vim.keymap.set('n', '<leader>co', builtin.commands, {})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, {})
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, {})
+vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
+vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, {})
 
 
 

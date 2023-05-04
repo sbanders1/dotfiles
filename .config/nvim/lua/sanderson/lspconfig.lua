@@ -36,7 +36,7 @@ local lsp_flags = {
   -- This is the default in Nvim 0.7+
   debounce_text_changes = 150,
 }
-require('lspconfig')['pyright'].setup{
+require('lspconfig')['jedi_language_server'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
@@ -59,7 +59,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright' }
+local servers = { 'jedi_language_server' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
