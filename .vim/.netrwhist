@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/projects/jd-kabul/logs/ny_opiate_litigation/IQVIA_CDS_20180703_BUFF'
-let g:netrw_dirhist_2='/home/sanderson/b/jd-kabul/.gitlab/issue_templates'
-let g:netrw_dirhist_3='/home/sanderson/.aws'
-let g:netrw_dirhist_4='/home/sanderson/n/admin/standards/gitlab/400_templates.md'
-let g:netrw_dirhist_5='/home/sanderson/n/packages/pevc'
-let g:netrw_dirhist_6='/home/sanderson/b/jd-kabul'
