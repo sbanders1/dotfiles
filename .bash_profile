@@ -1,28 +1,23 @@
 # .bash_profile
 
-# Get the aliases and functions
-if [ -f ~/.bashrc ]; then
-	. ~/.bashrc
+# inlcude ~/.bashrc if it exists 
+if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
 fi
 
-# User specific environment and startup programs
-
-if [ -e ~/.local/bin ]; then
-	PATH=~/.local/bin:$PATH
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
-if [ -e ~/bin ]; then
-	PATH=~/bin:$PATH
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
 fi
 
-# PATH=$PATH\:~/.cargo/bin
-
-if [ -e ~/.oh-my-bash ]; then
-	PATH=~/.oh-my-bash:$PATH
+# add scala bin dir to PATH if the user has it installed and the OS is Linux
+if [[ -d "$HOME/.local/share/coursier/bin" && "$(uname | tr '[:upper:]' '[:lower:]')" = "linux" ]] ; then
+	PATH="$PATH:$HOME/.local/share/coursier/bin"
 fi
 
-export PATH
-
-[[ $- == *i* ]] && stty -ixon
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export LC_ALL=en_US.UTF-8
+PATH="/usr/lib/rstudio-server/bin/quarto/bin:$PATH"

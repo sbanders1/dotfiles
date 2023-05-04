@@ -4,56 +4,33 @@ case $- in
     *) return;;
 esac
 
-set +o noclobber
+unset PROMPT_COMMAND
 
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-        . /etc/bashrc
-fi
-
-# Fuzzy Finder Settings
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
-alias af='vi "$(fzf)"'
-alias path='echo -e ${PATH//:/\\n}'
-alias metop='htop -u $(whoami)'
-alias trail='tail -f -n 20'
-alias diff='diff -uwi --suppress-common-lines'
-alias ranger='. ranger'
-
-# git aliases
-alias log='git log --graph --decorate --pretty=oneline --abbrev-commit'
-alias clone='git clone --recurse-submodules'
-
-export HISTSIZE=5000
-export HISTFILESIZE=5000
-export HISTCONTROL=ignoreboth
-shopt -q histappend
-alias df='df -H'
-alias more='less'
-export LESS="-R --LONG-PROMPT --QUIET"
-export pager=less
+export NZHOST='CRILNZ2'
+export NZ_DATABASE='CC_PEELY'
+export NZUSER='sanderson'
 
 alias vi='nvim'
 alias vim='nvim'
-export VISUAL=nvim
+export VISUAL='nim'
 
-if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
-  export FZF_DEFAULT_OPTS='-m --height 50% --border'
+alias af='vi "$(fzf)"'
+
+## if we are logging into a server with Conda installed then
+## optionally run setconda
+## if you want Conda in your path and have the base ENV activated when
+## you login then uncomment the line below this one
+if [[ -d "/opt/anaconda3/bin" ]] ; then 
+    # command -v setconda 1>/dev/null && setconda
+    setconda
 fi
-
-git_branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
-export PS1="\[\033[32m\]\w\[\033[33m\] \$(git_branch)\[\033[00m\]\n\$ "
+## if during any shell session you want to disable conda
+## you can say $ unsetconda and the following will happen
+## 1) any active ENV will be deactivated, 2) conda will removed from
+## your PATH environment variable
 
 # Path to your oh-my-bash installation.
-export OSH=$HOME/.oh-my-bash
+export OSH='/users/sanderson/.oh-my-bash'
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-bash is loaded.
@@ -64,7 +41,7 @@ OSH_THEME="powerline-plain"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="true"
+# HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -82,7 +59,7 @@ HYPHEN_INSENSITIVE="true"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -90,16 +67,27 @@ COMPLETION_WAITING_DOTS="true"
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+# stamp shown in the history command output.  One of the following values can
+# be used to specify the timestamp format.
+# * 'mm/dd/yyyy'     # mm/dd/yyyy + time
+# * 'dd.mm.yyyy'     # dd.mm.yyyy + time
+# * 'yyyy-mm-dd'     # yyyy-mm-dd + time
+# * '[mm/dd/yyyy]'   # [mm/dd/yyyy] + [time] with colors
+# * '[dd.mm.yyyy]'   # [dd.mm.yyyy] + [time] with colors
+# * '[yyyy-mm-dd]'   # [yyyy-mm-dd] + [time] with colors
+# If not set, the default value is 'yyyy-mm-dd'.
+# HIST_STAMPS='yyyy-mm-dd'
+
+# Uncomment the following line if you do not want OMB to overwrite the existing
+# aliases by the default OMB aliases defined in lib/*.sh
+# OMB_DEFAULT_ALIASES="check"
 
 # Would you like to use another custom folder than $OSH/custom?
 # OSH_CUSTOM=/path/to/new-custom-folder
 
 # To disable the uses of "sudo" by oh-my-bash, please set "false" to
 # this variable.  The default behavior for the empty value is "true".
-# OMB_USE_SUDO=true
+OMB_USE_SUDO=true
 
 # Which completions would you like to load? (completions can be found in ~/.oh-my-bash/completions/*)
 # Custom completions may be added to ~/.oh-my-bash/custom/completions/
@@ -107,6 +95,8 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many completions slow down shell startup.
 completions=(
   git
+  brew
+  awscli
   composer
   ssh
 )
@@ -117,7 +107,6 @@ completions=(
 # Add wisely, as too many aliases slow down shell startup.
 aliases=(
   general
-  ls
 )
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-bash/plugins/*)
@@ -145,11 +134,11 @@ source "$OSH"/oh-my-bash.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='mvim'
- fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -165,3 +154,21 @@ source "$OSH"/oh-my-bash.sh
 # Example aliases
 # alias bashconfig="mate ~/.bashrc"
 # alias ohmybash="mate ~/.oh-my-bash"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
